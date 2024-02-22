@@ -1,0 +1,40 @@
+\documentclass[rusmathsym, eqnumwithinsec, amspack, hyperref]{bomgost}
+\input{letters.def}
+\input{Settings/prefix}
+\graphicspath{ {Graphics/} } % Указание папки для поиска изображений
+
+\title{Computer Aided Robotics Thesis}
+\author{Александр Мазурин}
+\date{}
+
+\begin{document}
+\label{start-doc}
+
+% Титульный лист
+\input{Title/title-page}
+\newpage
+~
+% Аннотация, Содержание, Введение
+\input{Chapters/introduction}
+
+\mainpart
+
+% Подключение глав
+\input{Chapters/chapter_1}
+\input{Chapters/chapter_2}
+
+% Заключение
+\input{Chapters/conclusion}
+
+% Список литературы
+\renewcommand\refname{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+\printbibliography
+
+\label{end-doc}
+
+
+\setcounter{totpages}{\numexpr\getpagerefnumber{end-doc}-\getpagerefnumber{start-doc}\relax+1}
+
+% Приложение (может быть пустым)
+\input{Extra/appendix}
+\end{document}

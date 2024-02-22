@@ -1,0 +1,95 @@
+% \documentclass[rusmathsym, eqnumwithinsec, amspack, hyperref]{bomgost}
+% \input{letters.def}
+
+% Закомментируйте это, если hyperref не нужен. 
+% Изменение уровня \subparagraph (приложения) в закладках pdf документа. 
+% Это нужно для сохранения правильной иерархии закладок в pdf документе.
+\makeatletter%
+\renewcommand{\toclevel@subparagraph}{2}%
+\makeatother% 
+
+% Для вставки программного кода.
+\usepackage{listings}
+
+% "Умная" запятая: \(0,2\) - число, \(0, 2\) - перечисление.
+\usepackage{icomma}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{longtable}
+\usepackage{cleveref}
+
+\usepackage{lastpage}
+\usepackage{refcount}
+
+% Графика
+\usepackage{graphicx} % подключение графики
+
+\usepackage{multirow} % объединение ячеек таблиц по вертикали
+\usepackage{tabularx} % автоматический подбор ширины столбцов
+
+\pgfplotsset{compat=newest}
+
+\pgfplotstableset{set thousands separator={}, precision=3, use comma, col sep=comma, header=true,
+every head row/.style={before row=\hline, after row=\hline},
+every even row/.style={after row=\hline},
+every odd row/.style={after row=\hline},
+every column/.style={column type/.add={|}{}},
+every last column/.style={column type/.add={}{|}},
+columns/text/.style={string type},
+}
+
+
+% Гиперссылки
+% \usepackage{hyperref}
+
+% Прочее
+\usepackage{color} % работа с цветом
+\usepackage{dashrule}
+\usepackage{lscape}
+
+\usepackage{afterpage} % вставка материала после текущей страницы
+\usepackage[font={normal}]{caption} % настройка подписей к рисункам и таблицам
+
+% Использование полужирного начертания для векторов
+\let\vec=\mathbf
+
+% Таблицы
+\usepackage{array} % расширенные возможности для работы с таблицами
+
+\usepackage{dcolumn} % выравнивание чисел по разделителям
+
+\usepackage[backend=biber, style=gost-numeric, sorting=none]{biblatex}
+
+\addbibresource{Bibliography/bibliography.bib}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.96}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+    numbers=left,   % С какой стороны нумеровать
+    stepnumber = 3, % Шаг нумерации 
+    numbersep=5pt,                      
+    numberstyle=\color{codegray},       % Стиль который будет использоваться для нумерации строк
+    backgroundcolor=\color{backcolour}, % Цвет фона
+    commentstyle=\color{codegreen},     % Стиль комментариев
+    keywordstyle=\color{magenta},       % Стиль ключевых слов
+    stringstyle=\color{codepurple},     % Стиль литералов
+    basicstyle=\ttfamily\footnotesize,  % Используемый шрифт
+    breaklines=true,        % Автоматический перенос строк
+    breakatwhitespace=false, % Переносить строки по словам
+    tabsize=2,                          % Tab - 2 пробела
+    showtabs=false,                     % Показывать отступы
+    showspaces=false,
+    showstringspaces=false,             % Показывать пробелы
+    keepspaces=true
+}
+
+
+\lstset{style=mystyle}
+
+\pretocmd{\cite}{\stepcounter{totreferences}}{}{}
